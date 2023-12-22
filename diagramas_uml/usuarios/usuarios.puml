@@ -1,0 +1,24 @@
+@startuml Usuario
+
+class GrupoDeUsuarios {
+  - id: Long
+  - nome: String
+  - descricao: String
+  - dataCriacao: LocalDateTime
+  - dataAtualizacao: LocalDateTime
+}
+
+class Usuario {
+  - id: Long
+  - nome: String
+  - email: String
+  - senha: String
+  - dataNascimento: LocalDate
+  - sexo: Sexo
+  - dataCriacao: LocalDateTime
+  - dataAtualizacao: LocalDateTime
+}
+
+GrupoDeUsuarios "1" -- "*" Usuario
+
+@enduml

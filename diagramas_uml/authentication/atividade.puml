@@ -1,0 +1,13 @@
+@startuml Autentica
+(*) --> "Iniciar Autenticação"
+if "Credenciais Válidas?" then
+  -->[Sim] "Gerar Token de Autenticação"
+  --> "Retornar Token"
+  --> (*)
+else
+  -->[Não] "Exibir Mensagem de Erro"
+  --> (*)
+endif
+@enduml
+
+

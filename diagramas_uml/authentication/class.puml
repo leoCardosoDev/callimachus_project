@@ -1,0 +1,23 @@
+@startuml Autenticacao
+
+class Autenticacao {
+  - id: Long
+  - token: String
+  - dataCriacao: LocalDateTime
+  - dataAtualizacao: LocalDateTime
+}
+
+class Usuario {
+  - id: Long
+  - nome: String
+  - email: String
+  - senha: String
+  - dataNascimento: LocalDate
+  - sexo: Sexo
+  - dataCriacao: LocalDateTime
+  - dataAtualizacao: LocalDateTime
+}
+
+Autenticacao "1" -- "1" Usuario
+
+@enduml

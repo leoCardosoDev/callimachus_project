@@ -1,0 +1,19 @@
+@startuml Administrador
+
+participant Administrador
+participant API
+participant User
+
+activate Administrador
+Administrador -> API: Envia solicitação de autenticação
+
+alt Usuário encontrado
+    API -> User: Busca usuário pelo e-mail
+    User --> API: Retorna usuário
+    API --> Administrador: Retorna token de autenticação
+else Usuário não encontrado
+    API --> Administrador: Retorna mensagem de erro
+end
+
+deactivate Administrador
+@enduml
