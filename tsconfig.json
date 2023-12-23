@@ -12,6 +12,6 @@
       "@/*": ["*"]
     }
   },
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "jest-unit-config.ts", "jest-integration-config.ts"],
   "exclude": []
 }
