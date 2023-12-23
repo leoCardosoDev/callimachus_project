@@ -31,6 +31,7 @@
         "esbenp.prettier-vscode",
         "andys8.jest-snippets",
         "dracula-theme.theme-dracula",
+        "dbaeumer.vscode-eslint",
         "natqe.reload",
         "tabnine.tabnine-vscode"
 			],
