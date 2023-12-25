@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/faker": "^5.5.3",
     "@types/jest": "^29.5.11",
     "@types/module-alias": "^2.0.4",
     "@types/node": "^20.10.5",
