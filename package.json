@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "check": "npm-check -s -u",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
-    "test:verbose": "jest --passWithNoTests --runInBand --no-cache",
+    "lint": "eslint \"**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest --passWithNoTests t --noStackTrace --runInBand --no-cache",
     "test:unit": "npm test -- --watch -c jest-unit-config.ts",
     "test:integration": "npm test -- --watch -c jest-integration-config.ts",
     "test:staged": "npm test -- --findRelatedTests",
