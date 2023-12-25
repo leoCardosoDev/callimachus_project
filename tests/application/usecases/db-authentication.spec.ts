@@ -1,22 +1,25 @@
 import { DbAuthentication } from '@/application/usecases'
 
 import { mockAuthenticationParams, throwError } from '@/tests/domain/mocks'
-import { HashCompareSpy, LoadAccountByEmailRepositorySpy } from '@/tests/application/mocks'
+import { EncrypterSpy, HashCompareSpy, LoadAccountByEmailRepositorySpy } from '@/tests/application/mocks'
 
 type SutTypes = {
   sut: DbAuthentication
   loadAccountByEmailRepositorySpy: LoadAccountByEmailRepositorySpy
   hashCompareSpy: HashCompareSpy
+  encrypterSpy: EncrypterSpy
 }
 
 const makeSut = (): SutTypes => {
   const loadAccountByEmailRepositorySpy = new LoadAccountByEmailRepositorySpy()
   const hashCompareSpy = new HashCompareSpy()
-  const sut = new DbAuthentication(loadAccountByEmailRepositorySpy, hashCompareSpy)
+  const encrypterSpy = new EncrypterSpy()
+  const sut = new DbAuthentication(loadAccountByEmailRepositorySpy, hashCompareSpy, encrypterSpy)
   return {
     sut,
     loadAccountByEmailRepositorySpy,
-    hashCompareSpy
+    hashCompareSpy,
+    encrypterSpy
   }
 }
 
@@ -62,5 +65,11 @@ describe('DbAuthentication Usecase', () => {
     hashCompareSpy.isValid = false
     const model = await sut.auth(mockAuthenticationParams())
     expect(model).toBeNull()
+  })
+
+  test('should call Encrypter with correct plaintext', async () => {
+    const { sut, loadAccountByEmailRepositorySpy, encrypterSpy } = makeSut()
+    await sut.auth(mockAuthenticationParams())
+    expect(encrypterSpy.plaintext).toBe(loadAccountByEmailRepositorySpy.result?.id)
   })
 })
